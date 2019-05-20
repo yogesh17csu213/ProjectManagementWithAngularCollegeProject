@@ -1,0 +1,168 @@
+
+<style>
+
+
+  .card {
+    overflow:hidden;
+    width: 300px;
+    height: 330px;
+    z-index: 2;
+    
+   
+    box-shadow: 5px 5px 5px rgb(106, 114, 106);
+  
+    transition: 0.4s ease-out;
+   
+    
+   
+    background-color:darkseagreen;margin-bottom:20px; margin-top: 20px;
+  }
+  
+  
+  .card:hover {
+    transform: translateY(-20px);
+    transition: 0.4s ease-out;
+  }
+  
+  
+  
+  
+  .bar {
+   
+    height: 5px;
+    width: 100%;
+  }
+  
+  .emptybar {
+    background-color:white;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .filledbar {
+    top: 0px;
+    z-index: 3;
+    width: 0px;
+    height: 100%;
+    background: rgb(51, 53, 52);
+    opacity: 0.4;
+    
+    transition: 0.6s ease-out;
+  }
+  
+  .card:hover .filledbar {
+    width: 100%;
+    transition: 0.4s ease-out;
+  }
+  
+  
+  
+  
+  
+   
+   
+   
+   
+   
+   
+   
+  </style>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   <div class="col-12  " style="margin-bottom:50px;"><div class="navbar fixed-top text-white justify-content-between" style="background-color:#88b77b ; ">
+      <a class="navbar-brand">Admin</a>
+      <form class="form-inline">
+          <button class="btn btn-danger my-2 my-sm-0" style="margin-top: 20px" routerLink="/admin/main/projects/create">
+              Add New Project
+             </button>
+         
+        
+      </form>
+  </div>
+  </div>
+  <div class="container">
+     <div class="row" >
+      <div *ngFor="let p of getProjects()" class="col-lg-4 card"  >
+          
+             
+              <div class="card-body" style="color:white;" >
+                <h5 class="card-title">Project Name : {{p.name}}</h5>
+                <div class="bar">
+                  <div class="emptybar"></div>
+                  <div class="filledbar"></div>
+                </div>
+                <br>
+                <h6 class="card-title">   Branch : {{p.branch}}</h6>
+  
+                <h6 class="card-title">   Status : {{p.status}}</h6>
+                <p class="card-text" *ngIf=" p.description!= null ">   Technology Used : {{ p.description  }}</p>
+                <a  class="btn "  [routerLink]="['/admin/main/projects/edit', p.id]" style="color:whitesmoke;background-color: darkslategray;" >Edit</a>
+                <a  class="btn " (click)="deleteProject(p.id)" style="color:whitesmoke; margin-left: 10px;background-color: maroon;">Delete</a>
+                
+              </div>
+            
+      </div>
+  </div>
+  </div>
+  
+  
+  
+  
+  <!-- 
+  <div class="container">
+    <div class="card">
+      <h3 class="title">Card 1</h3>
+      <div class="bar">
+        <div class="emptybar"></div>
+        <div class="filledbar"></div>
+      </div>
+      <div class="circle">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <circle class="stroke" cx="60" cy="60" r="50"/>
+      </svg>
+      </div>
+    </div>
+    <div class="card">
+      <h3 class="title">Card 2</h3>
+      <div class="bar">
+        <div class="emptybar"></div>
+        <div class="filledbar"></div>
+      </div>
+      <div class="circle">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <circle class="stroke" cx="60" cy="60" r="50"/>
+      </svg>
+      </div>
+    </div>
+    <div class="card">
+      <h3 class="title">Card 3</h3>
+      <div class="bar">
+        <div class="emptybar"></div>
+        <div class="filledbar"></div>
+      </div>
+      <div class="circle">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <circle class="stroke" cx="60" cy="60" r="50"/>
+      </svg>
+      </div>
+    </div>
+    
+  </div> -->
+  

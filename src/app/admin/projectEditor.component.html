@@ -1,0 +1,149 @@
+<style>
+   .ng-valid[required],.ng-valid.required{
+      border-left:5px solid #42a948;
+   }
+   .ng-invalid:not(form){
+      border-left:5px solid #a94442;
+   }
+</style>
+
+
+<div class="bg-primary p-2 text-white" [class.bg-warning]="editing" [class.text-dark]="editing">
+   <h5>{{editing ? "Edit" : "Create"}} Project</h5>
+</div>
+<form novalidate #form="ngForm" (ngSubmit)="save(form)" >
+   <div class="form-group">
+      <label>Name</label>
+      <input class="form-control" name="name" id="name" required  minlength="5" maxlength="30" [(ngModel)]="project.name" #name='ngModel'/>
+  <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+<div [hidden]="!name.errors.required">
+Name is required !
+</div>
+<div [hidden]="!name.errors.minlength">
+   Name must be 5 characters long.
+</div>
+<div [hidden]="!name.errors.maxlength">
+   Name cannot be more then 30 characters.
+</div>
+
+  </div>
+   </div>
+   <div class="form-group">
+      <label for="inputState">Branch</label>
+      <select name="branch" class="form-control" id="branch" required [(ngModel)]="project.branch" #branch='ngModel'>
+         <option >CSE</option>
+          <option>ME</option>
+          <option>CIVIL</option>
+          <option>EEE</option>
+          <option>APS</option>
+          <div *ngIf="branch.errors && branch.touched" class="alert alert-danger">
+            <div [hidden]="!branch.errors.required">Branch is required!</div>
+         </div> 
+      </select> 
+       </div>
+   <div class="form-group">
+      <label>Student Roll No.1</label>
+      <input class="form-control" name="strollno1" id="strollno1"  required  minlength="5" maxlength="30" [(ngModel)]="project.strollno1" #strollno1='ngModel' />
+      <div *ngIf="strollno1.errors && (strollno1.dirty || strollno1.touched)" class="alert alert-danger">
+         <div [hidden]="!strollno1.errors.required">
+         Roll No. is required !
+         </div>
+         <div [hidden]="!strollno1.errors.minlength">
+            Roll No. must be 5 characters long.
+         </div>
+         <div [hidden]="!strollno1.errors.maxlength">
+            Roll No. cannot be more then 30 characters.
+         </div>
+         
+           </div>
+
+   </div>
+   <div class="form-group">
+      <label>Student Name 1</label>
+      <input class="form-control" name="stdname1" id="stdname1"  required  minlength="5" maxlength="30" [(ngModel)]="project.stdname1" #stdname1='ngModel' />
+      <div *ngIf="stdname1.errors && (stdname1.dirty || stdname1.touched)" class="alert alert-danger">
+         <div [hidden]="!stdname1.errors.required">
+         Name is required !
+         </div>
+         <div [hidden]="!stdname1.errors.minlength">
+            Name must be 5 characters long.
+         </div>
+         <div [hidden]="!stdname1.errors.maxlength">
+            Name cannot be more then 30 characters.
+         </div>
+         
+           </div>
+   </div>
+   <div class="form-group">
+      <label>Student Roll No.2</label>
+      <input class="form-control" name="strollno2" id="strollno2"  required  minlength="5" maxlength="30" [(ngModel)]="project.strollno2" #strollno2='ngModel'  />
+      <div *ngIf="strollno2.errors && (strollno2.dirty || strollno2.touched)" class="alert alert-danger">
+         <div [hidden]="!strollno2.errors.required">
+            Roll No. is required !
+         </div>
+         <div [hidden]="!strollno2.errors.minlength">
+            Roll No. must be 5 characters long.
+         </div>
+         <div [hidden]="!strollno2.errors.maxlength">
+            Roll No. cannot be more then 30 characters.
+         </div>
+         
+           </div>
+   </div>
+   <div class="form-group">
+      <label>Student Name 2</label>
+      <input class="form-control" name="stdname2" id="stdname2"  required  minlength="5" maxlength="30" [(ngModel)]="project.stdname2" #stdname2='ngModel' />
+      <div *ngIf="stdname2.errors && (stdname2.dirty || stdname2.touched)" class="alert alert-danger">
+         <div [hidden]="!stdname2.errors.required">
+         Name is required !
+         </div>
+         <div [hidden]="!stdname2.errors.minlength">
+            Name must be 5 characters long.
+         </div>
+         <div [hidden]="!stdname2.errors.maxlength">
+            Name cannot be more then 30 characters.
+         </div>
+         
+           </div>
+   </div>
+   <div class="form-group">
+      <label>Student Roll No.3</label>
+      <input class="form-control" name="strollno3" [(ngModel)]="project.strollno3" />
+   </div>
+   <div class="form-group">
+      <label>Student Name 3</label>
+      <input class="form-control" name="stdname3"  [(ngModel)]="project.stdname3" />
+   </div>
+   <div class="form-group">
+      <label>Student Roll No.4</label>
+      <input class="form-control" name="strollno4" [(ngModel)]="project.strollno4" />
+   </div>  <div class="form-group">
+      <label>Student Name 4</label>
+      <input class="form-control" name="stdname4"  [(ngModel)]="project.stdname4" />
+   </div>
+
+   <div class="form-group">
+      <label>Technology Used</label>
+      <textarea class="form-control" name="description" [(ngModel)]="project.description">
+    </textarea>
+   </div>
+   <div class="form-group">
+      <label for="inputState">Status</label>
+      <select name="status" class="form-control" required  id="status" [(ngModel)]="project.status" #status='ngModel'>
+          <option>Started</option>
+          <option>In Progress</option>
+          <option>Completed</option>
+          <option>Evaluated</option>
+          <div *ngIf="status.errors && status.touched" class="alert alert-danger">
+            <div [hidden]="!status.errors.required">Status is required!</div>
+         </div> 
+      </select>
+  </div>
+   <button type="submit" class="btn btn-primary" [class.btn-warning]="editing"  [disabled]="!form.form.valid">
+      {{editing ? "Save" : "Create"}}
+   </button>
+   <button type="reset" class="btn btn-secondary" routerLink="/admin/main/projects">
+      Cancel
+   </button>
+
+</form>
